@@ -17,6 +17,8 @@ if __name__ == "__main__":
     # 创建一个TimedRotatingFileHandler并设置level为info
     current_dir_path = os.path.dirname(os.path.realpath(__file__))
     # handler = TimedRotatingFileHandler(os.path.join(current_dir_path, 'logs', 'log.txt'), when='midnight', interval=1, backupCount=30)
+    if not os.path.exists(os.path.join(current_dir_path, 'logs')):
+        os.mkdir(os.path.join(current_dir_path, 'logs'))
     handler = TimedRotatingFileHandler(os.path.join(current_dir_path, 'logs', 'log.txt'), when='midnight', interval=1, backupCount=30)
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
